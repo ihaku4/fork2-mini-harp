@@ -13,6 +13,7 @@
     "connect": "^3.0.0-rc.1"
   },
   "devDependencies": {
-    "minimist": "0.0.8"
+    "minimist": "0.0.8",
+    "connect-logger": "0.0.1"
   }
 }

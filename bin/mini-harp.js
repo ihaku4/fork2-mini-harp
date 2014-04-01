@@ -2,6 +2,10 @@
 var createMiniHarp = require("mini-harp");
 var parseArgs = require("minimist");
 var port = parseArgs(process.argv)["port"] || 4000;
-var app = createMiniHarp();
 console.log("Starting miniharp on http://localhost:" + port);
-app.listen(port);
+createMiniHarp()
+    .use(function(req, res, next) {
+        if (req.url === "/") res.end((new Date()).toISOString());
+        else next();
+    })
+    .listen(port);
