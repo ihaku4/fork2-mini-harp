@@ -17,6 +17,14 @@ var app = function(root) {
                         res.end(html);
                    });
                 });
+            } else if (req.url === "/index.html" || req.url === "/") {
+                fs.readFile(assetsPath + "/index.jade", function(err, data) {
+                   if (err) throw err;
+                   jade.render(data, function(err, html) {
+                        if (err) next();
+                        res.end(html);
+                   });
+                });
             } else if (req.url === "/bar.html") {
 //                serveStatic(assetsPath + req.url)(req, res, next);
                 fs.readFile(assetsPath + req.url, function(err, data) {
@@ -39,6 +47,6 @@ var app = function(root) {
                     res.end(data);
                 });
             } else next();
-        } );
+        } ) ;
 }
 module.exports = app;
